@@ -555,7 +555,7 @@ namespace TreebookC
 
         private void newPageToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            newPage();
+            newSubPage();
         }
     }
     #endregion

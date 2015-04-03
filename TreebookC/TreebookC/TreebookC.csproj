@@ -95,6 +95,21 @@
   <ItemGroup>
     <None Include="Resources\file_save_final.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_as_final.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_delete_final.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printericon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_final2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_as_final2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

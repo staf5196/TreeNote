@@ -41,10 +41,12 @@
             this.sfd = new System.Windows.Forms.SaveFileDialog();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.newHeaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logo = new System.Windows.Forms.PictureBox();
             this.newPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_deletepage = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_save = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_saveas = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_print = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.GroupBox2.SuspendLayout();
             this.GroupBox1.SuspendLayout();
@@ -60,11 +62,11 @@
             this.GroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.GroupBox2.BackColor = System.Drawing.Color.Gainsboro;
+            this.GroupBox2.BackColor = System.Drawing.Color.White;
             this.GroupBox2.Controls.Add(this.editor);
-            this.GroupBox2.Location = new System.Drawing.Point(247, 108);
+            this.GroupBox2.Location = new System.Drawing.Point(247, 72);
             this.GroupBox2.Name = "GroupBox2";
-            this.GroupBox2.Size = new System.Drawing.Size(480, 401);
+            this.GroupBox2.Size = new System.Drawing.Size(480, 437);
             this.GroupBox2.TabIndex = 6;
             this.GroupBox2.TabStop = false;
             this.GroupBox2.Text = "Page";
@@ -83,18 +85,18 @@
             this.editor.Location = new System.Drawing.Point(6, 19);
             this.editor.Multiline = true;
             this.editor.Name = "editor";
-            this.editor.Size = new System.Drawing.Size(469, 374);
+            this.editor.Size = new System.Drawing.Size(469, 410);
             this.editor.TabIndex = 0;
             // 
             // GroupBox1
             // 
             this.GroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.GroupBox1.BackColor = System.Drawing.Color.Gainsboro;
+            this.GroupBox1.BackColor = System.Drawing.Color.White;
             this.GroupBox1.Controls.Add(this.pageview);
-            this.GroupBox1.Location = new System.Drawing.Point(12, 108);
+            this.GroupBox1.Location = new System.Drawing.Point(12, 72);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(229, 313);
+            this.GroupBox1.Size = new System.Drawing.Size(229, 349);
             this.GroupBox1.TabIndex = 5;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "Tree";
@@ -108,7 +110,7 @@
             this.pageview.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.pageview.Location = new System.Drawing.Point(6, 19);
             this.pageview.Name = "pageview";
-            this.pageview.Size = new System.Drawing.Size(217, 288);
+            this.pageview.Size = new System.Drawing.Size(217, 324);
             this.pageview.TabIndex = 0;
             this.pageview.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.pageview_AfterCheck);
             this.pageview.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.pageview_ItemDrag);
@@ -122,7 +124,7 @@
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox3.BackColor = System.Drawing.Color.Gainsboro;
+            this.groupBox3.BackColor = System.Drawing.Color.White;
             this.groupBox3.Controls.Add(this.checkBox1);
             this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Controls.Add(this.label1);
@@ -175,11 +177,12 @@
             // 
             this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Gainsboro;
             this.flowLayoutPanel1.Controls.Add(this.logo);
             this.flowLayoutPanel1.Controls.Add(this.menuStrip1);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(732, 93);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(732, 66);
             this.flowLayoutPanel1.TabIndex = 17;
             // 
             // menuStrip1
@@ -187,19 +190,15 @@
             this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newPageToolStripMenuItem,
-            this.newHeaderToolStripMenuItem,
-            this.menu_save});
+            this.menu_deletepage,
+            this.menu_save,
+            this.menu_saveas,
+            this.menu_print});
             this.menuStrip1.Location = new System.Drawing.Point(212, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(268, 38);
+            this.menuStrip1.Size = new System.Drawing.Size(186, 38);
             this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // newHeaderToolStripMenuItem
-            // 
-            this.newHeaderToolStripMenuItem.Name = "newHeaderToolStripMenuItem";
-            this.newHeaderToolStripMenuItem.Size = new System.Drawing.Size(84, 34);
-            this.newHeaderToolStripMenuItem.Text = "New Header";
             // 
             // logo
             // 
@@ -217,27 +216,59 @@
             this.newPageToolStripMenuItem.Image = global::TreebookC.Properties.Resources.file_save_final;
             this.newPageToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.newPageToolStripMenuItem.Name = "newPageToolStripMenuItem";
-            this.newPageToolStripMenuItem.Size = new System.Drawing.Size(42, 34);
+            this.newPageToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
+            this.newPageToolStripMenuItem.Size = new System.Drawing.Size(34, 34);
             this.newPageToolStripMenuItem.Click += new System.EventHandler(this.newPageToolStripMenuItem_Click_1);
+            // 
+            // menu_deletepage
+            // 
+            this.menu_deletepage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.menu_deletepage.Image = global::TreebookC.Properties.Resources.file_delete_final;
+            this.menu_deletepage.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.menu_deletepage.Name = "menu_deletepage";
+            this.menu_deletepage.Padding = new System.Windows.Forms.Padding(0);
+            this.menu_deletepage.Size = new System.Drawing.Size(34, 34);
+            this.menu_deletepage.Text = "New Header";
             // 
             // menu_save
             // 
             this.menu_save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.menu_save.Image = global::TreebookC.Properties.Resources.save_small;
+            this.menu_save.Image = global::TreebookC.Properties.Resources.save_final2;
             this.menu_save.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.menu_save.Name = "menu_save";
-            this.menu_save.Size = new System.Drawing.Size(42, 34);
+            this.menu_save.Padding = new System.Windows.Forms.Padding(0);
+            this.menu_save.Size = new System.Drawing.Size(34, 34);
             this.menu_save.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // menu_saveas
+            // 
+            this.menu_saveas.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.menu_saveas.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.menu_saveas.Image = global::TreebookC.Properties.Resources.save_as_final2;
+            this.menu_saveas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.menu_saveas.Name = "menu_saveas";
+            this.menu_saveas.Padding = new System.Windows.Forms.Padding(0);
+            this.menu_saveas.Size = new System.Drawing.Size(34, 34);
+            this.menu_saveas.Text = "s";
+            // 
+            // menu_print
+            // 
+            this.menu_print.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.menu_print.Image = global::TreebookC.Properties.Resources.printericon;
+            this.menu_print.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.menu_print.Name = "menu_print";
+            this.menu_print.Size = new System.Drawing.Size(42, 34);
+            this.menu_print.Text = "Print";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.BackColor = System.Drawing.Color.Gainsboro;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 94);
+            this.pictureBox2.BackColor = System.Drawing.Color.White;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 66);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(744, 428);
+            this.pictureBox2.Size = new System.Drawing.Size(744, 456);
             this.pictureBox2.TabIndex = 16;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
@@ -291,8 +322,10 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem newPageToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newHeaderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menu_deletepage;
         private System.Windows.Forms.ToolStripMenuItem menu_save;
+        private System.Windows.Forms.ToolStripMenuItem menu_saveas;
+        private System.Windows.Forms.ToolStripMenuItem menu_print;
     }
 }
 
