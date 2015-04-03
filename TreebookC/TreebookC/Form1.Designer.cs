@@ -36,41 +36,22 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.menu_newpage = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveCurrentPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toOneNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toNotepadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toWordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.treeSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editorSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_newheader = new System.Windows.Forms.Button();
-            this.menu_deletepage = new System.Windows.Forms.Button();
-            this.menu_save = new System.Windows.Forms.Button();
-            this.menu_open = new System.Windows.Forms.Button();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.logo = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.ofd = new System.Windows.Forms.OpenFileDialog();
             this.sfd = new System.Windows.Forms.SaveFileDialog();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.newHeaderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logo = new System.Windows.Forms.PictureBox();
+            this.newPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_save = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.GroupBox2.SuspendLayout();
             this.GroupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -181,215 +162,72 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Page Name:";
             // 
-            // menu_newpage
+            // ofd
             // 
-            this.menu_newpage.ForeColor = System.Drawing.Color.Black;
-            this.menu_newpage.Location = new System.Drawing.Point(102, 2);
-            this.menu_newpage.Name = "menu_newpage";
-            this.menu_newpage.Size = new System.Drawing.Size(78, 23);
-            this.menu_newpage.TabIndex = 8;
-            this.menu_newpage.Text = "New Page";
-            this.menu_newpage.UseVisualStyleBackColor = true;
-            this.menu_newpage.Click += new System.EventHandler(this.menu_newpage_Click);
+            this.ofd.FileName = "openFileDialog1";
+            this.ofd.Filter = "TreeNote Files (*.tnote)|*.tnote";
+            // 
+            // sfd
+            // 
+            this.sfd.Filter = "TreeNote Files (*.tnote)|*.tnote";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.Controls.Add(this.logo);
+            this.flowLayoutPanel1.Controls.Add(this.menuStrip1);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(732, 93);
+            this.flowLayoutPanel1.TabIndex = 17;
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.settingsToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.newPageToolStripMenuItem,
+            this.newHeaderToolStripMenuItem,
+            this.menu_save});
+            this.menuStrip1.Location = new System.Drawing.Point(212, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(734, 24);
-            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Size = new System.Drawing.Size(268, 38);
+            this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // fileToolStripMenuItem
+            // newHeaderToolStripMenuItem
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem,
-            this.openToolStripMenuItem,
-            this.saveAllToolStripMenuItem,
-            this.saveCurrentPageToolStripMenuItem,
-            this.saveAsToolStripMenuItem,
-            this.exportToolStripMenuItem,
-            this.printToolStripMenuItem,
-            this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.newToolStripMenuItem.Text = "New";
-            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
-            // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.openToolStripMenuItem.Text = "Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
-            // 
-            // saveAllToolStripMenuItem
-            // 
-            this.saveAllToolStripMenuItem.Name = "saveAllToolStripMenuItem";
-            this.saveAllToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.saveAllToolStripMenuItem.Text = "Save";
-            this.saveAllToolStripMenuItem.Click += new System.EventHandler(this.saveAllToolStripMenuItem_Click);
-            // 
-            // saveCurrentPageToolStripMenuItem
-            // 
-            this.saveCurrentPageToolStripMenuItem.Name = "saveCurrentPageToolStripMenuItem";
-            this.saveCurrentPageToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.saveCurrentPageToolStripMenuItem.Text = "Save Current Page";
-            // 
-            // saveAsToolStripMenuItem
-            // 
-            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.saveAsToolStripMenuItem.Text = "Save As...";
-            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
-            // 
-            // exportToolStripMenuItem
-            // 
-            this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toOneNoteToolStripMenuItem,
-            this.toNotepadToolStripMenuItem,
-            this.toWordToolStripMenuItem});
-            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.exportToolStripMenuItem.Text = "Export";
-            // 
-            // toOneNoteToolStripMenuItem
-            // 
-            this.toOneNoteToolStripMenuItem.Name = "toOneNoteToolStripMenuItem";
-            this.toOneNoteToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.toOneNoteToolStripMenuItem.Text = "To OneNote";
-            // 
-            // toNotepadToolStripMenuItem
-            // 
-            this.toNotepadToolStripMenuItem.Name = "toNotepadToolStripMenuItem";
-            this.toNotepadToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.toNotepadToolStripMenuItem.Text = "To Notepad";
-            // 
-            // toWordToolStripMenuItem
-            // 
-            this.toWordToolStripMenuItem.Name = "toWordToolStripMenuItem";
-            this.toWordToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.toWordToolStripMenuItem.Text = "To Word";
-            // 
-            // printToolStripMenuItem
-            // 
-            this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.printToolStripMenuItem.Text = "Print";
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fontToolStripMenuItem,
-            this.colorToolStripMenuItem,
-            this.treeSettingsToolStripMenuItem,
-            this.editorSettingsToolStripMenuItem});
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.settingsToolStripMenuItem.Text = "Settings";
-            // 
-            // fontToolStripMenuItem
-            // 
-            this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.fontToolStripMenuItem.Text = "Font";
-            // 
-            // colorToolStripMenuItem
-            // 
-            this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            this.colorToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.colorToolStripMenuItem.Text = "Color";
-            // 
-            // treeSettingsToolStripMenuItem
-            // 
-            this.treeSettingsToolStripMenuItem.Name = "treeSettingsToolStripMenuItem";
-            this.treeSettingsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.treeSettingsToolStripMenuItem.Text = "Tree Settings";
-            // 
-            // editorSettingsToolStripMenuItem
-            // 
-            this.editorSettingsToolStripMenuItem.Name = "editorSettingsToolStripMenuItem";
-            this.editorSettingsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.editorSettingsToolStripMenuItem.Text = "Editor Settings";
-            // 
-            // menu_newheader
-            // 
-            this.menu_newheader.ForeColor = System.Drawing.Color.Black;
-            this.menu_newheader.Location = new System.Drawing.Point(186, 2);
-            this.menu_newheader.Name = "menu_newheader";
-            this.menu_newheader.Size = new System.Drawing.Size(78, 23);
-            this.menu_newheader.TabIndex = 10;
-            this.menu_newheader.Text = "New Header";
-            this.menu_newheader.UseVisualStyleBackColor = true;
-            this.menu_newheader.Click += new System.EventHandler(this.menu_newheader_Click);
-            // 
-            // menu_deletepage
-            // 
-            this.menu_deletepage.ForeColor = System.Drawing.Color.Black;
-            this.menu_deletepage.Location = new System.Drawing.Point(270, 2);
-            this.menu_deletepage.Name = "menu_deletepage";
-            this.menu_deletepage.Size = new System.Drawing.Size(78, 23);
-            this.menu_deletepage.TabIndex = 11;
-            this.menu_deletepage.Text = "Delete Page";
-            this.menu_deletepage.UseVisualStyleBackColor = true;
-            // 
-            // menu_save
-            // 
-            this.menu_save.ForeColor = System.Drawing.Color.Black;
-            this.menu_save.Location = new System.Drawing.Point(354, 2);
-            this.menu_save.Name = "menu_save";
-            this.menu_save.Size = new System.Drawing.Size(78, 23);
-            this.menu_save.TabIndex = 12;
-            this.menu_save.Text = "Save";
-            this.menu_save.UseVisualStyleBackColor = true;
-            this.menu_save.Click += new System.EventHandler(this.menu_save_Click);
-            // 
-            // menu_open
-            // 
-            this.menu_open.ForeColor = System.Drawing.Color.Black;
-            this.menu_open.Location = new System.Drawing.Point(438, 2);
-            this.menu_open.Name = "menu_open";
-            this.menu_open.Size = new System.Drawing.Size(78, 23);
-            this.menu_open.TabIndex = 13;
-            this.menu_open.Text = "Open";
-            this.menu_open.UseVisualStyleBackColor = true;
+            this.newHeaderToolStripMenuItem.Name = "newHeaderToolStripMenuItem";
+            this.newHeaderToolStripMenuItem.Size = new System.Drawing.Size(84, 34);
+            this.newHeaderToolStripMenuItem.Text = "New Header";
             // 
             // logo
             // 
             this.logo.Image = global::TreebookC.Properties.Resources.logo;
-            this.logo.Location = new System.Drawing.Point(21, 31);
+            this.logo.Location = new System.Drawing.Point(3, 3);
             this.logo.Name = "logo";
             this.logo.Size = new System.Drawing.Size(206, 57);
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logo.TabIndex = 14;
             this.logo.TabStop = false;
             // 
-            // pictureBox1
+            // newPageToolStripMenuItem
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::TreebookC.Properties.Resources.file_save;
-            this.pictureBox1.Location = new System.Drawing.Point(233, 31);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(31, 37);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
+            this.newPageToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.newPageToolStripMenuItem.Image = global::TreebookC.Properties.Resources.file_save_final;
+            this.newPageToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.newPageToolStripMenuItem.Name = "newPageToolStripMenuItem";
+            this.newPageToolStripMenuItem.Size = new System.Drawing.Size(42, 34);
+            this.newPageToolStripMenuItem.Click += new System.EventHandler(this.newPageToolStripMenuItem_Click_1);
+            // 
+            // menu_save
+            // 
+            this.menu_save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.menu_save.Image = global::TreebookC.Properties.Resources.save_small;
+            this.menu_save.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.menu_save.Name = "menu_save";
+            this.menu_save.Size = new System.Drawing.Size(42, 34);
+            this.menu_save.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // pictureBox2
             // 
@@ -402,15 +240,7 @@
             this.pictureBox2.Size = new System.Drawing.Size(744, 428);
             this.pictureBox2.TabIndex = 16;
             this.pictureBox2.TabStop = false;
-            // 
-            // ofd
-            // 
-            this.ofd.FileName = "openFileDialog1";
-            this.ofd.Filter = "TreeNote Files (*.tnote)|*.tnote";
-            // 
-            // sfd
-            // 
-            this.sfd.Filter = "TreeNote Files (*.tnote)|*.tnote";
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // Form1
             // 
@@ -418,19 +248,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(734, 513);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.logo);
-            this.Controls.Add(this.menu_open);
-            this.Controls.Add(this.menu_save);
-            this.Controls.Add(this.menu_deletepage);
-            this.Controls.Add(this.menu_newheader);
-            this.Controls.Add(this.menu_newpage);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.GroupBox2);
             this.Controls.Add(this.GroupBox1);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pictureBox2);
-            this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(604, 503);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -441,13 +263,13 @@
             this.GroupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -461,35 +283,16 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button menu_newpage;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveAllToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toOneNoteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toNotepadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toWordToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveCurrentPageToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
-        private System.Windows.Forms.Button menu_newheader;
-        private System.Windows.Forms.Button menu_deletepage;
-        private System.Windows.Forms.Button menu_save;
-        private System.Windows.Forms.Button menu_open;
         private System.Windows.Forms.FontDialog fontDialog1;
-        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fontToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem colorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem treeSettingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editorSettingsToolStripMenuItem;
         private System.Windows.Forms.PictureBox logo;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.OpenFileDialog ofd;
         private System.Windows.Forms.SaveFileDialog sfd;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem newPageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newHeaderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menu_save;
     }
 }
 

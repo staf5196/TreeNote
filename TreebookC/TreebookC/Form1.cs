@@ -542,6 +542,21 @@ namespace TreebookC
             Object obj = (Object)binForm.Deserialize(memStream);
             return obj;
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            save();
+        }
+
+        private void newPageToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            newPage();
+        }
     }
     #endregion
 }
