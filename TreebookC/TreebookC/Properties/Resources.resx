@@ -118,20 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="file_save" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\file_save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="fonticon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fonticon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="save_as_final" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\save_as_final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="gear-512-000000" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gear-512-000000.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="file_delete_final" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\file_delete_final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="file_save_final" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\file_save_final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="headericon21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\headericon21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="save_final2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save_final2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,10 +133,61 @@
   <data name="printericon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\printericon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="headericon2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\headericon2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="moreicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\moreicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="file_delete_final" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\file_delete_final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gear-512-0000001" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gear-512-0000001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="settingsicon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settingsicon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="file_save_final" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\file_save_final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="newdocicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\newdocicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="settingsicon2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settingsicon2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="exporticon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exporticon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="file_save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\file_save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="settingsicon21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settingsicon21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="save_small" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save_small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="save_as_final" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\save_as_final.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="settingsicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settingsicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="newheadericon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\newheadericon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="save_as_final2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save_as_final2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="refreshicon2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refreshicon2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="openfileicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\openfileicon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

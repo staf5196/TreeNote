@@ -44,6 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DragTag.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +112,51 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\save_as_final2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exporticon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fonticon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settingsicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settingsicon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gear-512-000000.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gear-512-0000001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settingsicon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newdocicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refreshicon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newheadericon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\headericon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\headericon21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\moreicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settingsicon21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\openfileicon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

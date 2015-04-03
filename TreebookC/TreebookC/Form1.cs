@@ -14,6 +14,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
+using System.Windows;
 
 namespace TreebookC
 {
@@ -111,6 +112,31 @@ namespace TreebookC
             n.isLocked = true;
             pageview.Nodes.Add(n);
             pageview.SelectedNode = n;
+        }
+        public void deletePage()
+        {
+            TreeNodePrime n = (TreeNodePrime)pageview.SelectedNode;
+            if (n.Nodes.Count > 0 && !n.isLocked)
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this branch?", "Warning", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    pageview.Nodes.Remove(n);
+                }
+            }
+            else if (Properties.Settings.Default.AskBeforeDelete && !n.isLocked)
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this branch?", "Warning", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    pageview.Nodes.Remove(n);
+                }
+            }
+            else if (!n.isLocked)
+            {
+                pageview.Nodes.Remove(n);
+            }
+
         }
         private void Button2_Click(object sender, EventArgs e)
         {
@@ -299,6 +325,7 @@ namespace TreebookC
             {
 
             }
+            menu_more.Margin = new Padding(this.Width - 628,0,0,0);
         }
 
         private void menu_newpage_Click(object sender, EventArgs e)
@@ -556,6 +583,55 @@ namespace TreebookC
         private void newPageToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             newSubPage();
+        }
+
+        private void headerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            newHeader();
+        }
+
+        private void menu_deletepage_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void menu_saveas_Click(object sender, EventArgs e)
+        {
+            saveAs();
+        }
+
+        private void newdocToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            newFile();
+        }
+
+        private void menu_print_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void openfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            open();
+        }
+
+        private void flowLayoutPanel1_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.All;
+            MessageBox.Show("going");
+        }
+
+        private void flowLayoutPanel1_DragDrop(object sender, DragEventArgs e)
+        {
+            TextBox newBox;
+            if (e.Data.GetDataPresent(typeof(TextBox)))
+            {
+                Point pt = ((TextBox)sender).PointToClient(new Point(e.X, e.Y));
+                TextBox DestinationBox = (TextBox)flowLayoutPanel1.GetChildAtPoint(pt);
+                newBox = (TextBox)e.Data.GetData(typeof(TreeNodePrime));
+                TextBox npBox = new TextBox();
+                
+            }
         }
     }
     #endregion

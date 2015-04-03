@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
             this.editor = new System.Windows.Forms.TextBox();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
@@ -39,22 +40,32 @@
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.ofd = new System.Windows.Forms.OpenFileDialog();
             this.sfd = new System.Windows.Forms.SaveFileDialog();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.logo = new System.Windows.Forms.PictureBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.headerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_deletepage = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_open = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_save = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_saveas = new System.Windows.Forms.ToolStripMenuItem();
+            this.newdocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_print = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_more = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.GroupBox2.SuspendLayout();
             this.GroupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // GroupBox2
@@ -64,9 +75,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GroupBox2.BackColor = System.Drawing.Color.White;
             this.GroupBox2.Controls.Add(this.editor);
-            this.GroupBox2.Location = new System.Drawing.Point(247, 72);
+            this.GroupBox2.Location = new System.Drawing.Point(247, 141);
             this.GroupBox2.Name = "GroupBox2";
-            this.GroupBox2.Size = new System.Drawing.Size(480, 437);
+            this.GroupBox2.Size = new System.Drawing.Size(367, 474);
             this.GroupBox2.TabIndex = 6;
             this.GroupBox2.TabStop = false;
             this.GroupBox2.Text = "Page";
@@ -85,7 +96,7 @@
             this.editor.Location = new System.Drawing.Point(6, 19);
             this.editor.Multiline = true;
             this.editor.Name = "editor";
-            this.editor.Size = new System.Drawing.Size(469, 410);
+            this.editor.Size = new System.Drawing.Size(356, 447);
             this.editor.TabIndex = 0;
             // 
             // GroupBox1
@@ -94,9 +105,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.GroupBox1.BackColor = System.Drawing.Color.White;
             this.GroupBox1.Controls.Add(this.pageview);
-            this.GroupBox1.Location = new System.Drawing.Point(12, 72);
+            this.GroupBox1.Location = new System.Drawing.Point(12, 141);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(229, 349);
+            this.GroupBox1.Size = new System.Drawing.Size(229, 386);
             this.GroupBox1.TabIndex = 5;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "Tree";
@@ -110,7 +121,7 @@
             this.pageview.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.pageview.Location = new System.Drawing.Point(6, 19);
             this.pageview.Name = "pageview";
-            this.pageview.Size = new System.Drawing.Size(217, 324);
+            this.pageview.Size = new System.Drawing.Size(217, 361);
             this.pageview.TabIndex = 0;
             this.pageview.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.pageview_AfterCheck);
             this.pageview.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.pageview_ItemDrag);
@@ -128,7 +139,7 @@
             this.groupBox3.Controls.Add(this.checkBox1);
             this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Location = new System.Drawing.Point(12, 427);
+            this.groupBox3.Location = new System.Drawing.Point(12, 533);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(229, 82);
             this.groupBox3.TabIndex = 7;
@@ -173,42 +184,48 @@
             // 
             this.sfd.Filter = "TreeNote Files (*.tnote)|*.tnote";
             // 
-            // flowLayoutPanel1
+            // printDialog1
             // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Gainsboro;
-            this.flowLayoutPanel1.Controls.Add(this.logo);
-            this.flowLayoutPanel1.Controls.Add(this.menuStrip1);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(732, 66);
-            this.flowLayoutPanel1.TabIndex = 17;
+            this.printDialog1.UseEXDialog = true;
             // 
-            // menuStrip1
+            // imageList1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newPageToolStripMenuItem,
-            this.menu_deletepage,
-            this.menu_save,
-            this.menu_saveas,
-            this.menu_print});
-            this.menuStrip1.Location = new System.Drawing.Point(212, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(186, 38);
-            this.menuStrip1.TabIndex = 15;
-            this.menuStrip1.Text = "menuStrip1";
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // logo
             // 
+            this.logo.BackColor = System.Drawing.Color.Gainsboro;
             this.logo.Image = global::TreebookC.Properties.Resources.logo;
-            this.logo.Location = new System.Drawing.Point(3, 3);
+            this.logo.Location = new System.Drawing.Point(8, 8);
             this.logo.Name = "logo";
             this.logo.Size = new System.Drawing.Size(206, 57);
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logo.TabIndex = 14;
             this.logo.TabStop = false;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Gainsboro;
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newPageToolStripMenuItem,
+            this.headerToolStripMenuItem,
+            this.menu_deletepage,
+            this.menu_open,
+            this.menu_save,
+            this.menu_saveas,
+            this.newdocToolStripMenuItem,
+            this.menu_print,
+            this.exportToolStripMenuItem,
+            this.settingsToolStripMenuItem,
+            this.menu_more});
+            this.menuStrip1.Location = new System.Drawing.Point(213, 5);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(412, 38);
+            this.menuStrip1.TabIndex = 15;
+            this.menuStrip1.Text = "menuStrip1";
             // 
             // newPageToolStripMenuItem
             // 
@@ -220,6 +237,17 @@
             this.newPageToolStripMenuItem.Size = new System.Drawing.Size(34, 34);
             this.newPageToolStripMenuItem.Click += new System.EventHandler(this.newPageToolStripMenuItem_Click_1);
             // 
+            // headerToolStripMenuItem
+            // 
+            this.headerToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.headerToolStripMenuItem.Image = global::TreebookC.Properties.Resources.headericon21;
+            this.headerToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.headerToolStripMenuItem.Name = "headerToolStripMenuItem";
+            this.headerToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
+            this.headerToolStripMenuItem.Size = new System.Drawing.Size(34, 34);
+            this.headerToolStripMenuItem.Text = "Header";
+            this.headerToolStripMenuItem.Click += new System.EventHandler(this.headerToolStripMenuItem_Click);
+            // 
             // menu_deletepage
             // 
             this.menu_deletepage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -229,6 +257,19 @@
             this.menu_deletepage.Padding = new System.Windows.Forms.Padding(0);
             this.menu_deletepage.Size = new System.Drawing.Size(34, 34);
             this.menu_deletepage.Text = "New Header";
+            this.menu_deletepage.Click += new System.EventHandler(this.menu_deletepage_Click);
+            // 
+            // menu_open
+            // 
+            this.menu_open.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.menu_open.Image = global::TreebookC.Properties.Resources.openfileicon;
+            this.menu_open.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.menu_open.Margin = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.menu_open.Name = "menu_open";
+            this.menu_open.Padding = new System.Windows.Forms.Padding(0);
+            this.menu_open.Size = new System.Drawing.Size(34, 34);
+            this.menu_open.Text = "openfile";
+            this.menu_open.Click += new System.EventHandler(this.openfileToolStripMenuItem_Click);
             // 
             // menu_save
             // 
@@ -236,8 +277,8 @@
             this.menu_save.Image = global::TreebookC.Properties.Resources.save_final2;
             this.menu_save.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.menu_save.Name = "menu_save";
-            this.menu_save.Padding = new System.Windows.Forms.Padding(0);
-            this.menu_save.Size = new System.Drawing.Size(34, 34);
+            this.menu_save.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.menu_save.Size = new System.Drawing.Size(36, 34);
             this.menu_save.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // menu_saveas
@@ -247,9 +288,21 @@
             this.menu_saveas.Image = global::TreebookC.Properties.Resources.save_as_final2;
             this.menu_saveas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.menu_saveas.Name = "menu_saveas";
-            this.menu_saveas.Padding = new System.Windows.Forms.Padding(0);
-            this.menu_saveas.Size = new System.Drawing.Size(34, 34);
+            this.menu_saveas.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.menu_saveas.Size = new System.Drawing.Size(36, 34);
             this.menu_saveas.Text = "s";
+            this.menu_saveas.Click += new System.EventHandler(this.menu_saveas_Click);
+            // 
+            // newdocToolStripMenuItem
+            // 
+            this.newdocToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.newdocToolStripMenuItem.Image = global::TreebookC.Properties.Resources.refreshicon2;
+            this.newdocToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.newdocToolStripMenuItem.Name = "newdocToolStripMenuItem";
+            this.newdocToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
+            this.newdocToolStripMenuItem.Size = new System.Drawing.Size(34, 34);
+            this.newdocToolStripMenuItem.Text = "Newdoc";
+            this.newdocToolStripMenuItem.Click += new System.EventHandler(this.newdocToolStripMenuItem_Click);
             // 
             // menu_print
             // 
@@ -257,34 +310,96 @@
             this.menu_print.Image = global::TreebookC.Properties.Resources.printericon;
             this.menu_print.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.menu_print.Name = "menu_print";
-            this.menu_print.Size = new System.Drawing.Size(42, 34);
+            this.menu_print.Padding = new System.Windows.Forms.Padding(0);
+            this.menu_print.Size = new System.Drawing.Size(34, 34);
             this.menu_print.Text = "Print";
+            this.menu_print.Click += new System.EventHandler(this.menu_print_Click);
             // 
-            // pictureBox2
+            // exportToolStripMenuItem
             // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.exportToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.exportToolStripMenuItem.Image = global::TreebookC.Properties.Resources.exporticon;
+            this.exportToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.exportToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(34, 34);
+            this.exportToolStripMenuItem.Text = "Export";
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.settingsToolStripMenuItem.Image = global::TreebookC.Properties.Resources.settingsicon21;
+            this.settingsToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(42, 34);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            // 
+            // menu_more
+            // 
+            this.menu_more.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.menu_more.Image = global::TreebookC.Properties.Resources.moreicon;
+            this.menu_more.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.menu_more.Margin = new System.Windows.Forms.Padding(9, 0, 0, 0);
+            this.menu_more.Name = "menu_more";
+            this.menu_more.Size = new System.Drawing.Size(42, 34);
+            this.menu_more.Text = "More";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.BackColor = System.Drawing.Color.White;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 66);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(744, 456);
-            this.pictureBox2.TabIndex = 16;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.pictureBox1.BackColor = System.Drawing.Color.Gainsboro;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(625, 135);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.flowLayoutPanel1.Controls.Add(this.textBox2);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(225, 46);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(384, 67);
+            this.flowLayoutPanel1.TabIndex = 16;
+            this.flowLayoutPanel1.WrapContents = false;
+            this.flowLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.flowLayoutPanel1_DragDrop);
+            this.flowLayoutPanel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.flowLayoutPanel1_DragEnter);
+            // 
+            // textBox2
+            // 
+            this.textBox2.AllowDrop = true;
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.textBox2.Font = new System.Drawing.Font("Candara", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.White;
+            this.textBox2.Location = new System.Drawing.Point(3, 3);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(78, 23);
+            this.textBox2.TabIndex = 0;
+            this.textBox2.Text = "TreeNote";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(734, 513);
+            this.ClientSize = new System.Drawing.Size(621, 619);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.logo);
+            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.GroupBox2);
             this.Controls.Add(this.GroupBox1);
-            this.Controls.Add(this.pictureBox2);
-            this.MinimumSize = new System.Drawing.Size(604, 503);
+            this.MinimumSize = new System.Drawing.Size(637, 503);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -294,13 +409,14 @@
             this.GroupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -315,17 +431,27 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FontDialog fontDialog1;
-        private System.Windows.Forms.PictureBox logo;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.OpenFileDialog ofd;
         private System.Windows.Forms.SaveFileDialog sfd;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.PictureBox logo;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem newPageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem headerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menu_deletepage;
+        private System.Windows.Forms.ToolStripMenuItem menu_open;
         private System.Windows.Forms.ToolStripMenuItem menu_save;
         private System.Windows.Forms.ToolStripMenuItem menu_saveas;
+        private System.Windows.Forms.ToolStripMenuItem newdocToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menu_print;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menu_more;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
 
