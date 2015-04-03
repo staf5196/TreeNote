@@ -60,10 +60,16 @@
             this.menu_save = new System.Windows.Forms.Button();
             this.menu_open = new System.Windows.Forms.Button();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.logo = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.GroupBox2.SuspendLayout();
             this.GroupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // GroupBox2
@@ -71,10 +77,11 @@
             this.GroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.GroupBox2.BackColor = System.Drawing.Color.Gainsboro;
             this.GroupBox2.Controls.Add(this.editor);
-            this.GroupBox2.Location = new System.Drawing.Point(247, 31);
+            this.GroupBox2.Location = new System.Drawing.Point(247, 108);
             this.GroupBox2.Name = "GroupBox2";
-            this.GroupBox2.Size = new System.Drawing.Size(334, 430);
+            this.GroupBox2.Size = new System.Drawing.Size(480, 401);
             this.GroupBox2.TabIndex = 6;
             this.GroupBox2.TabStop = false;
             this.GroupBox2.Text = "Page";
@@ -88,22 +95,23 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.editor.BackColor = System.Drawing.Color.White;
-            this.editor.Font = new System.Drawing.Font("Bell MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editor.ForeColor = System.Drawing.Color.Black;
             this.editor.Location = new System.Drawing.Point(6, 19);
             this.editor.Multiline = true;
             this.editor.Name = "editor";
-            this.editor.Size = new System.Drawing.Size(322, 403);
+            this.editor.Size = new System.Drawing.Size(469, 374);
             this.editor.TabIndex = 0;
             // 
             // GroupBox1
             // 
             this.GroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.GroupBox1.BackColor = System.Drawing.Color.Gainsboro;
             this.GroupBox1.Controls.Add(this.pageview);
-            this.GroupBox1.Location = new System.Drawing.Point(12, 31);
+            this.GroupBox1.Location = new System.Drawing.Point(12, 108);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(229, 342);
+            this.GroupBox1.Size = new System.Drawing.Size(229, 313);
             this.GroupBox1.TabIndex = 5;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "Tree";
@@ -117,7 +125,7 @@
             this.pageview.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(180)))), ((int)(((byte)(209)))));
             this.pageview.Location = new System.Drawing.Point(6, 19);
             this.pageview.Name = "pageview";
-            this.pageview.Size = new System.Drawing.Size(217, 317);
+            this.pageview.Size = new System.Drawing.Size(217, 288);
             this.pageview.TabIndex = 0;
             this.pageview.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.pageview_AfterCheck);
             this.pageview.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.pageview_ItemDrag);
@@ -131,10 +139,11 @@
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox3.BackColor = System.Drawing.Color.Gainsboro;
             this.groupBox3.Controls.Add(this.checkBox1);
             this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Location = new System.Drawing.Point(12, 379);
+            this.groupBox3.Location = new System.Drawing.Point(12, 427);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(229, 82);
             this.groupBox3.TabIndex = 7;
@@ -188,7 +197,7 @@
             this.settingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(588, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(734, 24);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -353,12 +362,48 @@
             this.menu_open.Text = "Open";
             this.menu_open.UseVisualStyleBackColor = true;
             // 
+            // logo
+            // 
+            this.logo.Image = global::TreebookC.Properties.Resources.logo;
+            this.logo.Location = new System.Drawing.Point(21, 31);
+            this.logo.Name = "logo";
+            this.logo.Size = new System.Drawing.Size(206, 57);
+            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.logo.TabIndex = 14;
+            this.logo.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = global::TreebookC.Properties.Resources.file_save;
+            this.pictureBox1.Location = new System.Drawing.Point(233, 31);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 37);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.BackColor = System.Drawing.Color.Gainsboro;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 94);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(744, 428);
+            this.pictureBox2.TabIndex = 16;
+            this.pictureBox2.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(588, 465);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(734, 513);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.logo);
             this.Controls.Add(this.menu_open);
             this.Controls.Add(this.menu_save);
             this.Controls.Add(this.menu_deletepage);
@@ -368,6 +413,7 @@
             this.Controls.Add(this.GroupBox2);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pictureBox2);
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(604, 503);
             this.Name = "Form1";
@@ -381,6 +427,9 @@
             this.groupBox3.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -420,6 +469,9 @@
         private System.Windows.Forms.ToolStripMenuItem colorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem treeSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editorSettingsToolStripMenuItem;
+        private System.Windows.Forms.PictureBox logo;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 
