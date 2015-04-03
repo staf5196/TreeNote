@@ -11,6 +11,7 @@ using System.Collections;
 
 namespace TreebookC
 {
+    [Serializable]
     class TreeNodePrime : TreeNode
     {
         public TreeNodePrime()

@@ -63,6 +63,8 @@
             this.logo = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.ofd = new System.Windows.Forms.OpenFileDialog();
+            this.sfd = new System.Windows.Forms.SaveFileDialog();
             this.GroupBox2.SuspendLayout();
             this.GroupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -221,18 +223,21 @@
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.newToolStripMenuItem.Text = "New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveAllToolStripMenuItem
             // 
             this.saveAllToolStripMenuItem.Name = "saveAllToolStripMenuItem";
             this.saveAllToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.saveAllToolStripMenuItem.Text = "Save";
+            this.saveAllToolStripMenuItem.Click += new System.EventHandler(this.saveAllToolStripMenuItem_Click);
             // 
             // saveCurrentPageToolStripMenuItem
             // 
@@ -245,6 +250,7 @@
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.saveAsToolStripMenuItem.Text = "Save As...";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // exportToolStripMenuItem
             // 
@@ -351,6 +357,7 @@
             this.menu_save.TabIndex = 12;
             this.menu_save.Text = "Save";
             this.menu_save.UseVisualStyleBackColor = true;
+            this.menu_save.Click += new System.EventHandler(this.menu_save_Click);
             // 
             // menu_open
             // 
@@ -395,6 +402,15 @@
             this.pictureBox2.Size = new System.Drawing.Size(744, 428);
             this.pictureBox2.TabIndex = 16;
             this.pictureBox2.TabStop = false;
+            // 
+            // ofd
+            // 
+            this.ofd.FileName = "openFileDialog1";
+            this.ofd.Filter = "TreeNote Files (*.tnote)|*.tnote";
+            // 
+            // sfd
+            // 
+            this.sfd.Filter = "TreeNote Files (*.tnote)|*.tnote";
             // 
             // Form1
             // 
@@ -472,6 +488,8 @@
         private System.Windows.Forms.PictureBox logo;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.OpenFileDialog ofd;
+        private System.Windows.Forms.SaveFileDialog sfd;
     }
 }
 

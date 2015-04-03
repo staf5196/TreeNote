@@ -8,6 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace TreebookC
 {
@@ -16,6 +22,8 @@ namespace TreebookC
     {
         int pd = 1;
         int hd = 1;
+        public bool isFileOpen = false;
+        public string fileLoc = "";
         bool partialLayoutb = false;
         public Form1()
         {
@@ -304,7 +312,7 @@ namespace TreebookC
             if (e.Data.GetDataPresent(typeof(TreeNodePrime)))
             {
                 Point pt = ((TreeView)sender).PointToClient(new Point(e.X, e.Y));
-                TreeNode DestinationNode = ((TreeView) sender).GetNodeAt(pt);
+                TreeNode DestinationNode = ((TreeView)sender).GetNodeAt(pt);
                 newNode = (TreeNodePrime)e.Data.GetData(typeof(TreeNodePrime));
                 if (!newNode.isLocked)
                 {
@@ -331,6 +339,208 @@ namespace TreebookC
         private void menu_newheader_Click(object sender, EventArgs e)
         {
             newHeader();
+        }
+
+        private void menu_save_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void save()
+        {
+            if (isFileOpen)
+            {
+                StreamWriter sw = new StreamWriter(fileLoc);
+                encode(sw);
+                sw.Flush();
+                sw.Close();
+            }
+            else
+            {
+                saveAs();
+            }
+        }
+        private void saveAs()
+        {
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                StreamWriter sw = new StreamWriter(sfd.FileName);
+                encode(sw);
+                sw.Flush();
+                sw.Close();
+                isFileOpen = true;
+                fileLoc = sfd.FileName;
+            }
+        }
+        private void open()
+        {
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                StreamReader sr = new StreamReader(ofd.FileName);
+                String content = sr.ReadToEnd();
+                sr.Close();
+                sr.Dispose();
+                load(sr, ofd.FileName);
+                isFileOpen = true;
+                fileLoc = ofd.FileName;
+            }
+        }
+        private void newFile()
+        {
+             DialogResult result = MessageBox.Show("Are you sure you want to create a new file without saving?", "Warning", MessageBoxButtons.YesNo);
+             if (result == DialogResult.Yes)
+                {
+                    isFileOpen = false;
+                    fileLoc = "";
+                    pageview.Nodes.Clear();
+                    createCorePage();
+                    refresh();
+                    pd = 1;
+                    hd = 1;
+                }
+            }
+        public void encode(StreamWriter sw)
+        {
+            //Write the header and root node
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"utf-8\" ?>");
+            sw.WriteLine("<" + pageview.Nodes[0].Text + ">");
+            foreach (TreeNodePrime node in pageview.Nodes)
+            {
+                saveNode(node.Nodes, sw);
+            }
+            //Close the root node
+            sw.WriteLine("</" + pageview.Nodes[0].Text + ">");
+        }
+
+        private void saveNode(TreeNodeCollection tnc, StreamWriter sw)
+        {
+            foreach (TreeNodePrime node in tnc)
+            {
+                //If we have child nodes, we'll write 
+                //a parent node, then iterrate through
+                //the children
+                    sw.WriteLine("<" + node.Text + " lock=" + (char)34 + node.isLocked.ToString() + (char)34 +
+                        " header=" + (char)34 + node.isHeader.ToString() + (char)34 +
+                        " usertext=" + (char)34 + node.text + (char)34 + ">");
+                    saveNode(node.Nodes, sw);
+                    sw.WriteLine("</" + node.Text + ">");
+            }
+        }
+
+        public void load(StreamReader sw, String filename)
+        {
+            try
+            {
+                //Just a good practice -- change the cursor to a 
+                //wait cursor while the nodes populate
+                this.Cursor = Cursors.WaitCursor;
+                //First, we'll load the Xml document
+                XmlDocument xDoc = new XmlDocument();
+                xDoc.Load(filename);
+                //Now, clear out the treeview, 
+                //and add the first (root) node
+                pageview.Nodes.Clear();
+                createCorePage();
+                TreeNodePrime tNode = new TreeNodePrime();
+                tNode = (TreeNodePrime)pageview.Nodes[0];
+                //We make a call to addTreeNode, 
+                //where we'll add all of our nodes
+                addTreeNode(xDoc.DocumentElement, tNode);
+                //Expand the treeview to show all nodes
+                pageview.ExpandAll();
+            }
+            catch (XmlException xExc)
+            //Exception is thrown is there is an error in the Xml
+            {
+                MessageBox.Show(xExc.Message);
+            }
+            catch (Exception ex) //General exception
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default; //Change the cursor back
+            }
+        }
+
+        //This function is called recursively until all nodes are loaded
+        private void addTreeNode(XmlNode xmlNode, TreeNodePrime treeNode)
+        {
+            XmlNode xNode;
+            TreeNodePrime tNode;
+            XmlNodeList xNodeList;
+            if (xmlNode.HasChildNodes) //The current node has children
+            {
+                xNodeList = xmlNode.ChildNodes;
+                for (int x = 0; x <= xNodeList.Count - 1; x++)
+                //Loop through the child nodes
+                {
+                    xNode = xmlNode.ChildNodes[x];
+                    TreeNodePrime t = new TreeNodePrime();
+                    t.Text = xNode.Name;
+                    t.isLocked = false;
+                    t.isHeader = false;
+                    t.text = "";
+                    foreach(XmlAttribute atr in xNode.Attributes)
+                    {
+                        if (atr.Name == "lock")
+                        {
+                            t.isLocked = Convert.ToBoolean(atr.Value);
+                        }
+                        else if (atr.Name == "header")
+                        {
+                            t.isHeader = Convert.ToBoolean(atr.Value);
+                        }
+                        else if (atr.Name == "usertext")
+                        {
+                            t.text = atr.Value;
+                        }
+                    }
+                    treeNode.Nodes.Add(t);
+                    tNode = (TreeNodePrime)treeNode.Nodes[x];
+                    addTreeNode(xNode, tNode);
+                }
+            }
+        }
+
+        private void saveAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            save();
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveAs();
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            open();
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            newFile();
+        }
+
+        private static byte[] ObjectToByteArray(Object obj)
+        {
+            if (obj == null)
+                return null;
+            BinaryFormatter bf = new BinaryFormatter();
+            MemoryStream ms = new MemoryStream();
+            bf.Serialize(ms, obj);
+            return ms.ToArray();
+        }
+
+        private static Object ByteArrayToObject(byte[] arrBytes)
+        {
+            MemoryStream memStream = new MemoryStream();
+            BinaryFormatter binForm = new BinaryFormatter();
+            memStream.Write(arrBytes, 0, arrBytes.Length);
+            memStream.Seek(0, SeekOrigin.Begin);
+            Object obj = (Object)binForm.Deserialize(memStream);
+            return obj;
         }
     }
     #endregion
