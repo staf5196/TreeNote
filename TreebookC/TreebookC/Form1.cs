@@ -23,6 +23,8 @@ namespace TreebookC
     {
         int pd = 1;
         int hd = 1;
+        String documentname = "TreeNote";
+        String author = "";
         public bool isFileOpen = false;
         public string fileLoc = "";
         bool partialLayoutb = false;
@@ -35,6 +37,7 @@ namespace TreebookC
         {
             createCorePage();
             refresh();
+            this.flowLayoutPanel1.AllowDrop = true;
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -615,23 +618,60 @@ namespace TreebookC
             open();
         }
 
-        private void flowLayoutPanel1_DragEnter(object sender, DragEventArgs e)
+        private void addTag(String s)
         {
-            e.Effect = DragDropEffects.All;
-            MessageBox.Show("going");
+            TextBox pbox = new TextBox();
+            pbox.Height = (23);
+            pbox.Width = (50);
+            pbox.Visible = true;
+            pbox.BackColor = Color.FromArgb(0,192,0);
+            pbox.Cursor = Cursors.Hand;
+            pbox.Font = new Font("Candara", 9.75f);
+            pbox.ForeColor = Color.White;
+            pbox.TextAlign = HorizontalAlignment.Center;
+            pbox.BorderStyle = BorderStyle.FixedSingle;
+
+            pbox.MouseDown += new MouseEventHandler(pbox_MouseDown);
+            pbox.DragOver += new DragEventHandler(pbox_DragOver);
+            pbox.DragEnter += new DragEventHandler(pbox_DragEnter);
+            pbox.TextChanged += new EventHandler(pbox_TextChanged);
+            pbox.AllowDrop = true;
+            flowLayoutPanel1.Controls.Add(pbox);
+        }
+        void pbox_DragOver(object sender, DragEventArgs e)
+        {
+            base.OnDragOver(e);
+            // is another dragable
+            if (e.Data.GetData(typeof(TextBox)) != null)
+            {
+                FlowLayoutPanel p = (FlowLayoutPanel)(sender as TextBox).Parent;
+                //Current Position             
+                int myIndex = p.Controls.GetChildIndex((sender as TextBox));
+
+                //Dragged to control to location of next picturebox
+                TextBox q = (TextBox)e.Data.GetData(typeof(TextBox));
+                p.Controls.SetChildIndex(q, myIndex);
+            }
+        }
+        void pbox_MouseDown(object sender, MouseEventArgs e)
+        {
+            base.OnMouseDown(e);
+            DoDragDrop(sender, DragDropEffects.All);
+        }
+        void pbox_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            addTag(textBox3.Text);
         }
 
-        private void flowLayoutPanel1_DragDrop(object sender, DragEventArgs e)
+        private void pbox_TextChanged(object sender, EventArgs e)
         {
-            TextBox newBox;
-            if (e.Data.GetDataPresent(typeof(TextBox)))
-            {
-                Point pt = ((TextBox)sender).PointToClient(new Point(e.X, e.Y));
-                TextBox DestinationBox = (TextBox)flowLayoutPanel1.GetChildAtPoint(pt);
-                newBox = (TextBox)e.Data.GetData(typeof(TreeNodePrime));
-                TextBox npBox = new TextBox();
-                
-            }
+            Size size = TextRenderer.MeasureText(textBox1.Text, textBox1.Font);
+            textBox1.Width = size.Width;
+            textBox1.Height = size.Height;
         }
     }
     #endregion
