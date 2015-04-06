@@ -225,7 +225,7 @@
             this.menu_more});
             this.menuStrip1.Location = new System.Drawing.Point(213, 5);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(412, 38);
+            this.menuStrip1.Size = new System.Drawing.Size(504, 38);
             this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -327,6 +327,7 @@
             this.exportToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
             this.exportToolStripMenuItem.Size = new System.Drawing.Size(34, 34);
             this.exportToolStripMenuItem.Text = "Export";
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 

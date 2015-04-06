@@ -377,6 +377,7 @@ namespace TreebookC
         }
         private void save()
         {
+            saveText();
             if (isFileOpen)
             {
                 StreamWriter sw = new StreamWriter(fileLoc);
@@ -391,6 +392,7 @@ namespace TreebookC
         }
         private void saveAs()
         {
+            saveText();
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 StreamWriter sw = new StreamWriter(sfd.FileName);
@@ -435,6 +437,7 @@ namespace TreebookC
             sw.WriteLine("<" + pageview.Nodes[0].Text + ">");
             foreach (TreeNodePrime node in pageview.Nodes)
             {
+                //Only called once in this situation -> gets every subnode of the core node
                 saveNode(node.Nodes, sw);
             }
             //Close the root node
@@ -533,6 +536,57 @@ namespace TreebookC
             }
         }
 
+        private List<String> getStringEncode()
+        {
+            List<String> firstliststring = new List<String>();
+            firstliststring.Add(this.documentname);
+            if (author != "") firstliststring.Add(this.author);
+            //Add date possibly?
+            firstliststring.Add("");
+
+            return stringencodeloop(firstliststring, pageview.Nodes[0].Nodes, 0, 0);
+        }
+
+        private List<String> stringencodeloop(List<String> lst, TreeNodeCollection tnc, int level, int spacing)
+        {
+            for(int i = 1; i <= tnc.Count; i++){
+                TreeNodePrime node = (TreeNodePrime)tnc[i-1];
+                String endsegment = "";
+                if (!node.isHeader && node.text != "")
+                {
+                    //Gets the title of the node and then what the user typed into the node
+                    endsegment = node.Text + " - " + node.text;
+                }
+                else if(!node.isHeader && node.text == "")
+                {
+                    endsegment = node.Text;
+                }
+                else
+                {
+                    endsegment = node.Text + ":";
+                }
+
+                switch (level)
+                {
+                    case 0: lst.Add(ToRomanUpper(i).ToString() + ". " + endsegment);
+                        lst = stringencodeloop(lst, node.Nodes, 1, spacing + 4);
+                        break;
+                    case 1: lst.Add(getSpacing(spacing) + ToUpperCase(i).ToString() + ". " + endsegment);
+                        lst = stringencodeloop(lst, node.Nodes, 2, spacing + 4);
+                        break;
+                    case 2: lst.Add(getSpacing(spacing) + ToRomanLower(i).ToString() + ". " + endsegment);
+                        lst = stringencodeloop(lst, node.Nodes, 3, spacing + 4);
+                        break;
+                    case 3: lst.Add(getSpacing(spacing) + i.ToString() + ". " + endsegment);
+                        lst = stringencodeloop(lst, node.Nodes, 1, spacing + 4);
+                        break;
+                    default: MessageBox.Show("Critical Error");
+                        break;
+                }
+            }
+            return lst;
+        }
+
         private void saveAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             save();
@@ -595,7 +649,7 @@ namespace TreebookC
 
         private void menu_deletepage_Click(object sender, EventArgs e)
         {
-            
+            deletePage();
         }
 
         private void menu_saveas_Click(object sender, EventArgs e)
@@ -672,6 +726,112 @@ namespace TreebookC
             Size size = TextRenderer.MeasureText(textBox1.Text, textBox1.Font);
             textBox1.Width = size.Width;
             textBox1.Height = size.Height;
+        }
+
+        public static string ToRomanUpper(int number)
+        {
+            if ((number < 0) || (number > 3999)) throw new ArgumentOutOfRangeException("insert value betwheen 1 and 3999");
+            if (number < 1) return string.Empty;
+            if (number >= 1000) return "M" + ToRomanUpper(number - 1000);
+            if (number >= 900) return "CM" + ToRomanUpper(number - 900);
+            if (number >= 500) return "D" + ToRomanUpper(number - 500);
+            if (number >= 400) return "CD" + ToRomanUpper(number - 400);
+            if (number >= 100) return "C" + ToRomanUpper(number - 100);
+            if (number >= 90) return "XC" + ToRomanUpper(number - 90);
+            if (number >= 50) return "L" + ToRomanUpper(number - 50);
+            if (number >= 40) return "XL" + ToRomanUpper(number - 40);
+            if (number >= 10) return "X" + ToRomanUpper(number - 10);
+            if (number >= 9) return "IX" + ToRomanUpper(number - 9);
+            if (number >= 5) return "V" + ToRomanUpper(number - 5);
+            if (number >= 4) return "IV" + ToRomanUpper(number - 4);
+            if (number >= 1) return "I" + ToRomanUpper(number - 1);
+            throw new ArgumentOutOfRangeException("something bad happened");
+        }
+
+        public static string ToRomanLower(int number)
+        {
+            if ((number < 0) || (number > 3999)) throw new ArgumentOutOfRangeException("insert value betwheen 1 and 3999");
+            if (number < 1) return string.Empty;
+            if (number >= 1000) return "m" + ToRomanLower(number - 1000);
+            if (number >= 900) return "cm" + ToRomanLower(number - 900);
+            if (number >= 500) return "d" + ToRomanLower(number - 500);
+            if (number >= 400) return "cd" + ToRomanLower(number - 400);
+            if (number >= 100) return "c" + ToRomanLower(number - 100);
+            if (number >= 90) return "xc" + ToRomanLower(number - 90);
+            if (number >= 50) return "l" + ToRomanLower(number - 50);
+            if (number >= 40) return "xl" + ToRomanLower(number - 40);
+            if (number >= 10) return "x" + ToRomanLower(number - 10);
+            if (number >= 9) return "ix" + ToRomanLower(number - 9);
+            if (number >= 5) return "v" + ToRomanLower(number - 5);
+            if (number >= 4) return "iv" + ToRomanLower(number - 4);
+            if (number >= 1) return "i" + ToRomanLower(number - 1);
+            throw new ArgumentOutOfRangeException("something bad happened");
+        }
+
+        public static string ToUpperCase(int number)
+        {
+            while (number > 26)
+            {
+                number = number - 26;
+            }
+            if (number == 0) MessageBox.Show("Uppercase error");
+            if (number == 1) return "A";
+            if (number == 2) return "B";
+            if (number == 3) return "C";
+            if (number == 4) return "D";
+            if (number == 5) return "E";
+            if (number == 6) return "F";
+            if (number == 7) return "G";
+            if (number == 8) return "H";
+            if (number == 9) return "I";
+            if (number == 10) return "J";
+            if (number == 11) return "K";
+            if (number == 12) return "L";
+            if (number == 13) return "M";
+            if (number == 14) return "N";
+            if (number == 15) return "O";
+            if (number == 16) return "P";
+            if (number == 17) return "Q";
+            if (number == 18) return "R";
+            if (number == 19) return "S";
+            if (number == 20) return "T";
+            if (number == 21) return "U";
+            if (number == 22) return "V";
+            if (number == 23) return "W";
+            if (number == 24) return "X";
+            if (number == 25) return "Y";
+            if (number == 26) return "Z";
+
+            MessageBox.Show("Uppercase error: Did not find number");
+            return "";
+        }
+
+        public static String getSpacing(int num)
+        {
+            String s = "";
+            while (num > 0)
+            {
+                s += " ";
+                num--;
+            }
+            return s;
+        }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Only exports to a text file currently
+            exportToTextFile();
+        }
+
+        private void exportToTextFile()
+        {
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Public\Tnotetest_export.txt"))
+            {
+                foreach (string line in getStringEncode())
+                {
+                    file.WriteLine(line);
+                }
+            }
         }
     }
     #endregion
