@@ -164,6 +164,8 @@ namespace TreebookC
         private void pageview_AfterSelect(object sender, TreeViewEventArgs e)
         {
             refresh();
+            removeAllTags();
+            addNodeTags((TreeNodePrime)pageview.SelectedNode);
         }
         public void refresh()
         {
@@ -216,6 +218,7 @@ namespace TreebookC
                 }
 
             }
+            
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -364,6 +367,30 @@ namespace TreebookC
         private void pageview_ItemDrag(object sender, ItemDragEventArgs e)
         {
             DoDragDrop(e.Item, DragDropEffects.Move);
+        }
+
+        private void removeAllTags()
+        {
+            foreach (Control c in flowLayoutPanel1.Controls)
+            {
+                flowLayoutPanel1.Controls.Remove(c);
+            }
+        }
+
+        private void addNodeTags(TreeNodePrime tnode)
+        {
+            String a = "Called: " + tnode.Name;
+            String b = "By: " + tnode.author;
+            addTag(a, "Title");
+            addTag(b, "Author");
+            if (tnode.isHeader)
+            {
+                addTag("Header", "Header");
+            }
+            else
+            {
+                addTag("Not Header", "Header");
+            }
         }
 
         private void menu_newheader_Click(object sender, EventArgs e)
@@ -672,9 +699,10 @@ namespace TreebookC
             open();
         }
 
-        private void addTag(String s)
+        private void addTag(String s, String tag)
         {
             TextBox pbox = new TextBox();
+            pbox.Text = s;
             pbox.Height = (23);
             pbox.Width = (50);
             pbox.Visible = true;
@@ -684,13 +712,75 @@ namespace TreebookC
             pbox.ForeColor = Color.White;
             pbox.TextAlign = HorizontalAlignment.Center;
             pbox.BorderStyle = BorderStyle.FixedSingle;
+            pbox.Tag = tag;
 
             pbox.MouseDown += new MouseEventHandler(pbox_MouseDown);
             pbox.DragOver += new DragEventHandler(pbox_DragOver);
             pbox.DragEnter += new DragEventHandler(pbox_DragEnter);
             pbox.TextChanged += new EventHandler(pbox_TextChanged);
+            pbox.KeyPress += new KeyPressEventHandler(pbox_KeyPress);
+            pbox.Click += new EventHandler(pbox_Click);
             pbox.AllowDrop = true;
             flowLayoutPanel1.Controls.Add(pbox);
+        }
+        private void pbox_Click(object sender, EventArgs e)
+        {
+            TreeNodePrime tnode = (TreeNodePrime)pageview.SelectedNode;
+            if (sender.GetType() == typeof(TextBox))
+            {
+                TextBox t = sender as TextBox;
+                if (t.Tag == "plus")
+                {
+                    addTag("Custom Tag", "");
+                }
+                else if (t.Tag == "Header")
+                {
+                    t.Text = "Not Header";
+                    tnode.isHeader = false;
+                    refresh();
+                }
+                else if (t.Tag == "Not Header")
+                {
+                    t.Text = "Header";
+                    tnode.isHeader = true;
+                    refresh();
+                }
+            }
+        }
+        private void pbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            if (sender.GetType() == typeof(TextBox))
+            {
+                TextBox t = sender as TextBox;
+                if (t.Text.Length >= 8)
+                {
+                    String s = t.Text.Substring(0, 8);
+                    if (s != "Called: " && t.Tag == "Title")
+                    {
+                        MessageBox.Show("sup");
+                        e.Handled = true;
+                    }
+                }
+                else if(t.Text.Length < 8)
+                {
+                    e.Handled = true;
+                }
+
+                if (t.Text.Length >= 4)
+                {
+                    String s2 = t.Text.Substring(0, 4);
+                    if (s2 != "By: " && t.Tag == "Author")
+                    {
+                        e.Handled = true;
+                    }
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+             
         }
         void pbox_DragOver(object sender, DragEventArgs e)
         {
@@ -718,14 +808,21 @@ namespace TreebookC
         }
         private void button1_Click_2(object sender, EventArgs e)
         {
-            addTag(textBox3.Text);
+            addTag(textBox3.Text, "");
         }
 
         private void pbox_TextChanged(object sender, EventArgs e)
         {
-            Size size = TextRenderer.MeasureText(textBox1.Text, textBox1.Font);
-            textBox1.Width = size.Width;
-            textBox1.Height = size.Height;
+            if(sender.GetType() == typeof(TextBox))
+            {
+            TextBox txtbox = sender as TextBox;
+            Size size = TextRenderer.MeasureText(txtbox.Text, txtbox.Font);
+            if (size.Width >= 40)
+            {
+                txtbox.Width = size.Width + 10;
+            }
+            }
+
         }
 
         public static string ToRomanUpper(int number)
@@ -833,6 +930,17 @@ namespace TreebookC
                 }
             }
         }
+
+        private void textBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
     }
     #endregion
 }

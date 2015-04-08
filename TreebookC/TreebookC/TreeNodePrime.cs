@@ -19,15 +19,18 @@ namespace TreebookC
             text = "";
             isHeader = false;
             isLocked = false;
+            author = "";
         }
-        public string text;
+        public String text;
         public bool isHeader;
         public bool isLocked;
+        public String author;
         public void replicateFrom(TreeNodePrime t)
         {
             this.text = t.text;
             this.isHeader = t.isHeader;
             this.isLocked = t.isLocked;
+            this.author = t.author;
         }
         public TreeNodePrime clonePrime()
         {
